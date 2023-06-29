@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ModuleGeneratorController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -32,7 +33,5 @@ Route::get('/about', function () {
 
 
 Route::prefix('module_generator')->name('module_generator.')->group(function () {
-    Route::get('test', function () {
-        return 'ok';
-    })->name('index');
+    Route::get('/', [ModuleGeneratorController::class, 'index'])->name('index');
 });
