@@ -1,7 +1,6 @@
 <template>
-    <!-- ===============================================-->
     <!--    Main Content-->
-    <!-- ===============================================-->
+
     <main class="main" id="top">
         <div class="container" data-layout="container">
             <nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
@@ -29,7 +28,7 @@
                         </div>
                     </a>
                 </div>
-                <slot name="main-nav"></slot>
+                <LayoutMainNav />
             </nav>
             <div class="content">
                 <nav
@@ -298,8 +297,9 @@
 
 <script>
 import { Link } from "@inertiajs/vue3";
+import LayoutMainNav from "../components/layoutComponents/LayoutMainNav.vue";
 export default {
-    components: { Link },
+    components: { Link, LayoutMainNav },
 };
 </script>
 

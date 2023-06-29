@@ -1,13 +1,13 @@
 <template>
-    <div>heheasd asdas heh</div>
+    <div>
+        {{ msg }}
+        <input type="text" v-model="msg" />
+    </div>
 </template>
 
-<script>
-export default {
-    setup() {
-        return {};
-    },
-};
+<script setup>
+import { ref } from "vue";
+const msg = ref("test");
 </script>
 
 <style lang="scss" scoped></style>
