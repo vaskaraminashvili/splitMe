@@ -11,6 +11,30 @@ class ModuleGeneratorController extends Controller
     public function index()
     {
         return Inertia::render('moduleGenerator.index');
-        // return view("admin::page.moduleGenerator.index");
+    }
+
+    public function create()
+    {
+        return Inertia::render('moduleGenerator.create');
+    }
+
+    public function store(Request $request)
+    {
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function edit($id)
+    {
+    }
+
+    public function update(Request $request, $id)
+    {
+    }
+
+    public function destroy($id)
+    {
     }
 }

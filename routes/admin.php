@@ -16,8 +16,6 @@ use Inertia\Inertia;
 */
 
 
-
-
 Route::get('/', function () {
     return Inertia::render('welcome', [
         'event' => 'test'
@@ -32,6 +30,5 @@ Route::get('/about', function () {
 });
 
 
-Route::prefix('module_generator')->name('module_generator.')->group(function () {
-    Route::get('/', [ModuleGeneratorController::class, 'index'])->name('index');
-});
+Route::resource('module_generator', ModuleGeneratorController::class);
+
