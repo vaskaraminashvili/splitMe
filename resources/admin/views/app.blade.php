@@ -63,6 +63,7 @@
       container.classList.add("container-fluid");
     }
   </script>
+  @routes
   @vite(['resources/admin/scss/app.scss', 'resources/admin/scripts/app.js'])
   @inertiaHead
 </head>

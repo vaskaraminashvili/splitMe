@@ -12,20 +12,21 @@
                             <hr class="mb-0 navbar-vertical-divider" />
                         </div>
                     </div>
-                    <!-- parent pages--><a
+                    <Link
+                        :href="route('admin.module_generator.index')"
                         class="nav-link"
-                        href="documentation/getting-started.html"
                         role="button"
                         aria-expanded="false"
                     >
                         <div class="d-flex align-items-center">
-                            <span class="nav-link-icon"
-                                ><span class="fas fa-rocket"></span></span
-                            ><span class="nav-link-text ps-1"
-                                >Module Generator</span
-                            >
+                            <span class="nav-link-icon">
+                                <span class="fas fa-rocket"></span>
+                            </span>
+                            <span class="nav-link-text ps-1">
+                                Module Generator
+                            </span>
                         </div>
-                    </a>
+                    </Link>
                 </li>
             </ul>
             <div class="settings mb-3"></div>

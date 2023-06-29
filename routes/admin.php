@@ -29,3 +29,10 @@ Route::get('/about', function () {
         'event' => 'test'
     ]);
 });
+
+
+Route::prefix('module_generator')->name('module_generator.')->group(function () {
+    Route::get('test', function () {
+        return 'ok';
+    })->name('index');
+});

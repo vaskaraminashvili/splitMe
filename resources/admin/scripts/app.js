@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
+import { createInertiaApp, Link } from '@inertiajs/vue3'
 import AdminLayout from "@/admin/scripts/views/layouts/default.vue"
+import { ZiggyVue } from 'ziggy';
 
 createInertiaApp({
     resolve: name => {
@@ -12,7 +13,9 @@ createInertiaApp({
     },
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
+            .component("Link", Link)
             .use(plugin)
+            .use(ZiggyVue, Ziggy)
             .mount(el)
     },
 })
