@@ -32,3 +32,5 @@ Route::get('/about', function () {
 
 Route::resource('module_generator', ModuleGeneratorController::class);
 
+Route::resource('articles', ModuleGeneratorController::class);
+
