@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
+namespace App\Generators;
 use Illuminate\Support\Pluralizer;
 use Illuminate\Filesystem\Filesystem;
 
-class MakeInterfaceCommand extends Command
+class InterfaceGenerator
 {
-    /**
+       /**
      * The name and signature of the console command.
      *
      * @var string
@@ -27,22 +25,16 @@ class MakeInterfaceCommand extends Command
      * @var Filesystem
      */
     protected $files;
+    protected $name;
 
     /**
      * Create a new command instance.
      * @param Filesystem $files
      */
-    public function __construct(Filesystem $files)
+    public function __construct($name)
     {
-        parent::__construct();
-        $this->files = $files;
-    }
-
-    /**
-     * Execute the console command.
-     */
-    public function handle()
-    {
+        $this->files = new Filesystem();
+        $this->name = $name;
         $path = $this->getSourceFilePath();
 
         $this->makeDirectory(dirname($path));
@@ -51,12 +43,12 @@ class MakeInterfaceCommand extends Command
 
         if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("File : {$path} created");
+            echo ("File : {$path} created");
         } else {
-            $this->info("File : {$path} already exits");
+            echo ("File : {$path} already exits");
         }
-
     }
+
 
     /**
      * Return the stub file path
@@ -65,7 +57,7 @@ class MakeInterfaceCommand extends Command
      */
     public function getStubPath()
     {
-        return __DIR__ . '/../../../resources/stubs/interface.stub';
+        return __DIR__ . '/../../resources/stubs/interface.stub';
     }
 
     /**
@@ -79,7 +71,7 @@ class MakeInterfaceCommand extends Command
     {
         return [
             'NAMESPACE'         => 'App\\Interfaces',
-            'CLASS_NAME'        => $this->getSingularClassName($this->argument('name')),
+            'CLASS_NAME'        => $this->getSingularClassName($this->name),
         ];
     }
 
@@ -110,7 +102,6 @@ class MakeInterfaceCommand extends Command
         {
             $contents = str_replace('$'.$search.'$' , $replace, $contents);
         }
-
         return $contents;
 
     }
@@ -122,7 +113,7 @@ class MakeInterfaceCommand extends Command
      */
     public function getSourceFilePath()
     {
-        return base_path('app/Interfaces') .'/' .$this->getSingularClassName($this->argument('name')) . 'Interface.php';
+        return base_path('app/Interfaces') .'/' .$this->getSingularClassName($this->name) . 'Interface.php';
     }
 
     /**
@@ -149,5 +140,4 @@ class MakeInterfaceCommand extends Command
 
         return $path;
     }
-
 }

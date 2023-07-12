@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Generators\InterfaceGenerator;
 
 class ModuleGeneratorController extends Controller
 {
     public function index()
     {
+        $generator = new InterfaceGenerator('Thread');
+dd('end');
         return Inertia::render('moduleGenerator.index');
     }
 
