@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\ModuleGeneratorController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,5 +33,5 @@ Route::get('/about', function () {
 
 Route::resource('module_generator', ModuleGeneratorController::class);
 
-Route::resource('articles', ModuleGeneratorController::class);
+Route::resource('articles', ArticleController::class);
 
