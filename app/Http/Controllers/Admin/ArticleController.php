@@ -12,7 +12,9 @@ class ArticleController extends Controller
     public function index()
     {
         $items = Article::query()
-            ->paginate(10)->through(fn($item) => [
+            ->latest()
+            ->paginate(10)
+            ->through(fn($item) => [
                 'id' => $item->id,
                 'title' => $item->title,
                 'body' => $item->body
@@ -23,10 +25,17 @@ class ArticleController extends Controller
 
     public function create()
     {
+        return Inertia::render('article.create');
     }
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'title' => 'required|unique:articles|max:255',
+            'body' => 'required',
+        ]);
+        Article::create($validated);
+        return redirect()->route('admin.articles.index');
     }
 
     public function show($id)
