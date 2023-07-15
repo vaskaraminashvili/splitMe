@@ -1,17 +1,25 @@
 <template>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination  pagination-sm justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <template v-for="(link, index) in links">
+        <li class="page-item" :class="{ disabled : !link.url , active: link.active}">
+          <Component
+            :is="link.url ? 'Link' : 'span'"
+            class="page-link"
+            :tabindex="index"
+            v-html="link.label"
+            :href="link.url"
+          />
+        </li>
+
+      </template>
+
+    </ul>
+  </nav>
 </template>
 
 <script setup>
-
+const porps = defineProps(['links'])
 </script>
 
 <style lang="scss" scoped>

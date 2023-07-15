@@ -12,8 +12,13 @@ class ArticleController extends Controller
     public function index()
     {
         $items = Article::query()
-         ->get();
-        return Inertia::render('article.index');
+            ->paginate(10)->through(fn($item) => [
+                'id' => $item->id,
+                'title' => $item->title,
+                'body' => $item->body
+            ]);
+        $data['items'] = $items;
+        return Inertia::render('article.index', ['data' => $data]);
     }
 
     public function create()
