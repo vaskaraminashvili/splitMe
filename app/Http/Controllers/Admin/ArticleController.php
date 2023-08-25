@@ -20,12 +20,12 @@ class ArticleController extends Controller
                 'body' => $item->body
             ]);
         $data['items'] = $items;
-        return Inertia::render('article.index', ['data' => $data]);
+        return Inertia::render('articles.index', ['data' => $data]);
     }
 
     public function create()
     {
-        return Inertia::render('article.create');
+        return Inertia::render('articles.create');
     }
 
     public function store(Request $request)

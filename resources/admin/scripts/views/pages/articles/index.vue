@@ -5,7 +5,7 @@
         <h5 class="mb-0" data-anchor="data-anchor">
           Articles Table
         </h5>
-        <Link :href="route('admin.articles.create')" class="btn btn-outline-info me-1 mb-1" type="button">
+        <Link :href="route('admin.articles.create')" class="btn btn-outline-info me-1 mb-1">
           Create New Article
         </Link>
       </div>
